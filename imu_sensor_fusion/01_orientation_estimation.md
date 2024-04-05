@@ -1,0 +1,43 @@
+# Orientation Estimation with Quaternions
+
+## Simple Estimation
+
+Let the instantaneous output of a 3-axis gyroscope, measured in degrees per second, be represented as $`\boldsymbol{\omega} = (0,\ \boldsymbol{\omega}_{x}\ ,\ \boldsymbol{\omega}_{y}\ ,\ \boldsymbol{\omega}_{z})`$.
+The orientation at time $`t`$ is expressed in quaternions as $`\mathbf{q}_{t} = (\mathbf{q}_{0}, \mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3})`$ and the initial orientation is defined as $`\mathbf{q}_{0} = (1, 0, 0, 0)`$ .
+
+The orientation estimate at time $`t + \Delta t $ is $ \mathbf{q}_{t + \Delta t}`$ .
+
+From Taylor series we have, $`f(x + h) = f(x) + h f'(x) + O(h^{2})`$. Here, $`O(h^{2})`$ represents the order of magnitude of the error term.
+
+```math
+\mathbf{q}_{t + \Delta t} = \mathbf{q}_{t} + \Delta t \ \dot{\mathbf{q}}_{t}
+```
+```math
+= \mathbf{q}_{t} + \Delta t \ \frac{1}{2} \ \boldsymbol{\omega} \ \mathbf{q}_{t} \tag{By \ quaternion \ differentiation}
+```
+```math
+= \mathbf{q}_{t} + \frac{1}{2} \ \boldsymbol{\omega} \ \mathbf{q}_{t} \ \Delta t
+```
+
+```math
+= \mathbf{q}_{t} + \frac{1}{2} \begin{bmatrix}
+    -\mathbf{q}_{1} \ \boldsymbol{\omega}_{x}- \mathbf{q}_{2} \ \boldsymbol{\omega}_{y}- \mathbf{q}_{3} \ \boldsymbol{\omega}_{z} \\
+    \mathbf{q}_{0} \ \boldsymbol{\omega}_{x} + \mathbf{q}_{2} \ \boldsymbol{\omega}_{z} - \mathbf{q}_{3} \ \boldsymbol{\omega}_{y} \\
+    \mathbf{q}_{0} \ \boldsymbol{\omega}_{y} - \mathbf{q}_{1} \ \boldsymbol{\omega}_{z} + \mathbf{q}_{3} \ \boldsymbol{\omega}_{x} \\
+    \mathbf{q}_{0} \ \boldsymbol{\omega}_{z} + \mathbf{q}_{1} \ \boldsymbol{\omega}_{y} - \mathbf{q}_{2} \ \boldsymbol{\omega}_{x}
+    \end{bmatrix} \Delta t \tag{By \ quaternion \ multiplication}
+```
+
+Normalize the result to get unit vector.
+
+```math
+\mathbf{q}_{t + \Delta t} = \frac{\mathbf{q}_{t + \Delta t}}{\| \mathbf{q}_{t + \Delta t} \|}
+```
+
+- The implementation can be observed in [mpu9250 arduino library](https://github.com/hideakitai/MPU9250/blob/3741120ae5816aa0cb7d4e15870f99c875c72bc1/MPU9250/QuaternionFilter.h#L50).
+
+### Additional Resources
+
+- [AHRS - Attitude from angular rate](https://ahrs.readthedocs.io/en/latest/filters/angular.html#)
+- [Stanford EE267 - Course Notes on IMU](assets/ee267_notes_imu.pdf)
+- [VIRTUAL REALITY By Steven M. LaValle - Chapter 9.1 and 9.2](assets/vrch9.pdf)
