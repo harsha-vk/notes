@@ -45,7 +45,24 @@
 
 ![out2](assets/out2.png)
 
-`Note: PWM Mode 1: Active high when Counter < Pulse (left-edge alignment). PWM Mode 2: Active low when Counter < Pulse (right-edge alignment).`
+### Configuration 4
+
+|                |                       |
+| -------------- | --------------------- |
+| OC Mode        | PWM Mode 1            |
+| Counter Mode   | Center Aligned mode 1 |
+| Period         | 500 (1Hz)             |
+| Pulse          | 100                   |
+| CH Polarity    | High                  |
+| CHN Polarity   | Low                   |
+| CH Idle State  | Set                   |
+| CHN Idle State | Reset                 |
+
+![out3](assets/out3.png)
+
+`Note 1: PWM Mode 1: Active High when Counter < Pulse (left-alignment in Up counter mode). PWM Mode 2: Active Low when Counter < Pulse (right-alignment in Up counter mode).`
+
+`Note 2: When using Center Aligned mode 1 counter, the period should be half that of the Up Counter mode to achieve the same frequency.`
 
 ### Method to Achieve 100% Duty Cycle
 
