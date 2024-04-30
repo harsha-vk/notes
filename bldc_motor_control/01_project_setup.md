@@ -1,4 +1,4 @@
-# Project Components
+# Project Setup
 
 ## Hardware
 
@@ -44,18 +44,35 @@
 
 ## STM32 NUCLEO-F302R8 Peripheral Configuration
 
-| Peripheral | Parameters                                  |
-| ---------- | ------------------------------------------- |
-| RCC        | HSE = BYPASS Clock Source                   |
-| NVIC       | TIM2 global interrupt                       |
-| ADC1       | Default                                     |
-| TIM1       | Counter Period = 499                        |
-|            | CHN Polarity = Low                          |
-| TIM2       | Prescaler = 8                               |
-|            | Counter Period = 1000000                    |
-|            | Trigger Event Selection TRGO = Update Event |
-| USART2     | Baud Rate = 115200                          |
-|            | Data Direction = Transmit Only              |
+`The clock speed for all peripherals is 72MHz, except for PCLK1, which has a maximum frequency of 36MHz.`
+
+| Peripheral | Parameters                                                              |
+| ---------- | ----------------------------------------------------------------------- |
+| DMA        | DAM Request = ADC1                                                      |
+|            | Mode = Circular                                                         |
+|            | Data Width = Word                                                       |
+| RCC        | HSE = BYPASS Clock Source                                               |
+| NVIC       | TIM2 global interrupt                                                   |
+| ADC1       | Scan Conversion Mode = Enabled                                          |
+|            | DMA Continous Requests = Enabled                                        |
+|            | End of Conversion Selection = End of sequence of conversion             |
+|            | ADC_Regular_ConversionMode:                                             |
+|            | Number Of Conversions = 8                                               |
+|            | External Trigger Conversion Source = Timer 1 TRGO event                 |
+|            | External Trigger Conversion Edge = Trigger detection on the rising edge |
+|            | Sampling time = 7.5 Cycles                                              |
+| TIM1       | Counter Mode = Center Aligned mode1                                     |
+|            | Counter Period = 1999                                                   |
+|            | Trigger Event Selection TRGO = Update Event                             |
+|            | CH Polarity = High                                                      |
+|            | CHN Polarity = Low                                                      |
+|            | CH Ideal State = Set                                                    |
+|            | CHN Ideal State = Reset                                                 |
+| TIM2       | Prescaler = 71                                                          |
+|            | Counter Period = 65535                                                  |
+|            | Trigger Event Selection TRGO = Update Event                             |
+| USART2     | Baud Rate = 115200                                                      |
+|            | Data Direction = Transmit Only                                          |
 
 ## Additional Resources
 
