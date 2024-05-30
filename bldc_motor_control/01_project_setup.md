@@ -16,31 +16,31 @@
 
 ## STM32 NUCLEO-F302R8 Pin Configuration
 
-| Pin                  | Function                                                            |
-| -------------------- | ------------------------------------------------------------------- |
-| PA0 (M1_CURR_FDBK_A) | ADC1_IN1 Single-ended                                               |
-| PA1 (M1_V_BUS)       | ADC1_IN2 Single-ended                                               |
-| PA2 (USART_TX)       | USART2_TX                                                           |
-| PA3 (USART_RX)       | USART2_RX                                                           |
-| PA4 (USR_POT)        | ADC1_IN5 Single-ended                                               |
-| PA7 (M1_PWM_A_L)     | TIM1_CH1N PWM Generation                                            |
-| PA8 (M1_PWM_A_H)     | TIM1_CH1 PWM Generation                                             |
-| PA9 (M1_PWM_B_H)     | TIM1_CH2 PWM Generation                                             |
-| PA10 (M1_PWM_C_H)    | TIM1_CH3 PWM Generation                                             |
-| PA15 (M1_HALL_A)     | TIM2_CH1 Input Capture direct mode                                  |
-| PB0 (M1_PWM_B_L)     | TIM1_CH2N PWM Generation                                            |
-| PB1 (M1_PWM_C_L)     | TIM1_CH3N PWM Generation                                            |
-| PB2 (USR_LED)        | GPIO_Output                                                         |
-| PB3 (M1_HALL_B)      | TIM2_CH2 Input Capture direct mode                                  |
-| PB10 (M1_HALL_C)     | TIM2_CH3 Input Capture direct mode                                  |
-| PB11 (M1_BEMF_B)     | ADC1_IN14 Single-ended                                              |
-| PB13 (M1_BEMF_C)     | ADC1_IN13 Single-ended                                              |
-| PC0 (M1_CURR_FDBK_C) | ADC1_IN6 Single-ended                                               |
-| PC1 (M1_CURR_FDBK_B) | ADC1_IN7 Single-ended                                               |
-| PC3 (M1_BEMF_A)      | ADC1_IN9 Single-ended                                               |
-| PC9 (M1_BEMF_GPIO)   | GPIO_Output Pullup                                                  |
-| PC13 (USR_BTN)       | GPIO_EXTI13 External Event mode with Falling edge trigger detection |
-| PF0 (RCC_OSC_IN)     | RCC_OSC_IN                                                          |
+| Pin                  | Function                                                                |
+| -------------------- | ----------------------------------------------------------------------- |
+| PA0 (M1_CURR_FDBK_A) | ADC1_IN1 Single-ended                                                   |
+| PA1 (M1_V_BUS)       | ADC1_IN2 Single-ended                                                   |
+| PA2 (USART_TX)       | USART2_TX                                                               |
+| PA3 (USART_RX)       | USART2_RX                                                               |
+| PA4 (USR_POT)        | ADC1_IN5 Single-ended                                                   |
+| PA7 (M1_PWM_A_L)     | TIM1_CH1N PWM Generation                                                |
+| PA8 (M1_PWM_A_H)     | TIM1_CH1 PWM Generation                                                 |
+| PA9 (M1_PWM_B_H)     | TIM1_CH2 PWM Generation                                                 |
+| PA10 (M1_PWM_C_H)    | TIM1_CH3 PWM Generation                                                 |
+| PA15 (M1_HALL_A)     | TIM2_CH1 Input Capture direct mode                                      |
+| PB0 (M1_PWM_B_L)     | TIM1_CH2N PWM Generation                                                |
+| PB1 (M1_PWM_C_L)     | TIM1_CH3N PWM Generation                                                |
+| PB2 (USR_LED)        | GPIO_Output                                                             |
+| PB3 (M1_HALL_B)      | TIM2_CH2 Input Capture direct mode                                      |
+| PB10 (M1_HALL_C)     | TIM2_CH3 Input Capture direct mode                                      |
+| PB11 (M1_BEMF_B)     | ADC1_IN14 Single-ended                                                  |
+| PB13 (M1_BEMF_C)     | ADC1_IN13 Single-ended                                                  |
+| PC0 (M1_CURR_FDBK_C) | ADC1_IN6 Single-ended                                                   |
+| PC1 (M1_CURR_FDBK_B) | ADC1_IN7 Single-ended                                                   |
+| PC3 (M1_BEMF_A)      | ADC1_IN9 Single-ended                                                   |
+| PC9 (M1_BEMF_GPIO)   | GPIO_Output Pullup                                                      |
+| PC13 (USR_BTN)       | GPIO_EXTI13 External Interrupt mode with Falling edge trigger detection |
+| PF0 (RCC_OSC_IN)     | RCC_OSC_IN                                                              |
 
 ## STM32 NUCLEO-F302R8 Peripheral Configuration
 
@@ -48,9 +48,12 @@
 
 | Peripheral | Parameters                                                              |
 | ---------- | ----------------------------------------------------------------------- |
-| DMA        | DAM Request = ADC1                                                      |
+| DMA        | DMA Request = ADC1                                                      |
 |            | Mode = Circular                                                         |
 |            | Data Width = Word                                                       |
+|            | DMA Request = UART2_RX                                                  |
+|            | Mode = Normal                                                           |
+|            | Data Width = byte                                                       |
 | RCC        | HSE = BYPASS Clock Source                                               |
 | NVIC       | TIM2 global interrupt                                                   |
 | ADC1       | Scan Conversion Mode = Enabled                                          |
@@ -71,8 +74,9 @@
 | TIM2       | Prescaler = 71                                                          |
 |            | Counter Period = 65535                                                  |
 |            | Trigger Event Selection TRGO = Update Event                             |
-| USART2     | Baud Rate = 115200                                                      |
-|            | Data Direction = Transmit Only                                          |
+| USART2     | Mode=Asynchronous                                                       |
+|            | Baud Rate = 115200                                                      |
+|            | Data Direction = Receive and Transmit                                   |
 
 ## Additional Resources
 

@@ -38,11 +38,20 @@
 
 #### Speed Manager
 
-## Interrupts
+- Obtain the ADC reading of the USR_POT.
+- Verify and continue only if the Start-Up process has finished.
+- If the ADC reading falls within the middle 15% range, activate the stop flag and clear the run flag.
+- Adjust the duty cycle according to the ADC reading.
 
-### Sensorless
+### Interrupts
 
-### Sensored
+#### Sensorless 1
+
+#### Sensorless 2
+
+#### Sensored
+
+<img alt="bldc_6step_interrupts_sensored" src="assets/bldc_6step_interrupts_sensored.png" height="480">
 
 ## Additional Resources
 
