@@ -109,6 +109,10 @@
         Output <- (Kp * Error) + ErrorSum - (Kd * dInput)
     ```
 
+### References
+
+- [Improving the Beginner’s PID – Introduction](http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/)
+
 ## Ziegler-Nichols Method for PID Autotuning
 
 - Start by setting the proportional gain (Kp) value to 1 and apply a step response to the reference/trigger signal.
@@ -126,6 +130,10 @@
 - Use either a basic low-pass filter or a two-trigger signal method to reduce noise in feedback readings.
 
     ![pid_autotune_3](assets/pid_autotune_3.png)
+
+### References
+
+- [Arduino PID Autotune Library](http://brettbeauregard.com/blog/2012/01/arduino-pid-autotune-library/)
 
 ## BLDC Motor Parameters
 

@@ -51,9 +51,6 @@
 | DMA        | DMA Request = ADC1                                                      |
 |            | Mode = Circular                                                         |
 |            | Data Width = Word                                                       |
-|            | DMA Request = UART2_RX                                                  |
-|            | Mode = Normal                                                           |
-|            | Data Width = byte                                                       |
 | RCC        | HSE = BYPASS Clock Source                                               |
 | NVIC       | TIM2 global interrupt                                                   |
 | ADC1       | Scan Conversion Mode = Enabled                                          |
